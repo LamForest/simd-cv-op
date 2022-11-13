@@ -1,0 +1,48 @@
+# OS-specific files
+.DS_Store 
+.vscode
+xcodeproj
+
+# build files
+build
+build_android_64
+build_android_32
+.DS_Store 
+CMakeFiles
+CMakeScripts
+Debug
+lib
+lib_nosymbol
+.builder
+project/ios/SNNEngineDemo
+
+
+# profile
+profile_build*
+profile_results
+
+#validate
+validate_build*
+gan_result
+
+# cmake
+CMakeFiles
+CMakeScripts
+cmake/Info.plist
+projects
+!projects/main.cpp
+!projects/CMakeLists.txt
+
+# flatbuffer
+MNN/3rd_party/flatbuffers/*
+
+# other
+include/snn_version.hpp
+lib
+lib_nosymbol
+cmake/Info.plist
+Pods
+Podfile.lock
+scripts-backup
+include/
+publish/
