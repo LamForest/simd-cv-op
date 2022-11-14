@@ -25,6 +25,13 @@ if(OPENCV_ENABLED)
     include_directories(${PROJECT_SOURCE_DIR}/thirdparty/opencv/macos/include/opencv4/opencv2)
   endif()
 
+  if(OS_ANDROID)
+    set(OPENCV_ARCH android/lib/${ANDROID_ABI})
+    set(OPENCV_SUFFIX so)
+    include_directories(${PROJECT_SOURCE_DIR}/thirdparty/opencv/android/include)
+    include_directories(${PROJECT_SOURCE_DIR}/thirdparty/opencv/android/include/opencv2)
+  endif()
+
   if(OS_MACOS OR OS_ANDROID)
     list(APPEND OPENCV_LIBS
       ${PROJECT_SOURCE_DIR}/thirdparty/opencv/${OPENCV_ARCH}/libopencv_core.${OPENCV_SUFFIX}

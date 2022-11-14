@@ -9,7 +9,8 @@ include(cmake/platform.cmake)
 
 message("ENABLE_NEON: ${ENABLE_NEON}")
 
-set(CMAKE_CXX_FLAGS "-DNDEBUG -O2")
+set(CMAKE_CXX_FLAGS "-DNDEBUG -O2 -ffast-math")
+# set(CMAKE_CXX_FLAGS "-DNDEBUG")
 
 file(GLOB CV_OP_SRC ./cv/arm/*.cpp ./op/arm/*.cpp)
 
@@ -23,10 +24,18 @@ option(BUILD_TEST " build test project " OFF)
 if(BUILD_TEST)
     message(STATUS "CV_OP_SRC files : ${CV_OP_SRC}")
 
-    add_subdirectory(test)
+   
     option(OPENCV_ENABLED " enable opencv " ON)
 
     if(OPENCV_ENABLED)
+
+        if(OS_ANDROID)
+            set(OPENCV_ARCH android/lib/${ANDROID_ABI})
+            set(OPENCV_SUFFIX so)
+            include_directories(${PROJECT_SOURCE_DIR}/thirdparty/opencv/android/include)
+            include_directories(${PROJECT_SOURCE_DIR}/thirdparty/opencv/android/include/opencv2)
+        endif()
+
         if(OS_MACOS)
             if(CMAKE_OSX_ARCHITECTURES MATCHES "arm64" OR CMAKE_HOST_SYSTEM_PROCESSOR MATCHES "arm64")
                 set(OPENCV_ARCH macos/lib/arm64)
@@ -41,4 +50,6 @@ if(BUILD_TEST)
         endif()
 
     endif()
+
+    add_subdirectory(test)
 endif()
