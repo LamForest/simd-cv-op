@@ -17,7 +17,7 @@ int main(int argc, char *argv[])
 
     // SIMDTestSuite::runAll(0);
 
-    // SIMDTestSuite::run("op/naive_dwconv3x3", 0);
+    // SIMDTestSuite::run("cv/BGR2Gray", 0);
     SIMDTestSuite::run("op/dwconv3x3", 0);
 
     return 0;

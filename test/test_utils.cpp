@@ -49,7 +49,7 @@ void TimeProfile(std::string name, int run_time, std::function<void()> &func)
     float time_sum = 0;
 
     //连续执行CONTINUE_RUN_TIMES次后，休息REST_TIMES * avg_time的时间
-    constexpr int CONTINUE_RUN_TIMES = 100;
+    constexpr int CONTINUE_RUN_TIMES = 30;
     constexpr int REST_TIMES = 50;
 
     // main loop

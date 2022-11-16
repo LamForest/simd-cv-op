@@ -20,7 +20,7 @@ bool isEqualPrecise(T *pa, T *pb, int len, const std::string &name)
         if (pb[i] != pa[i])
         {
             not_equal_num += 1;
-            std::cout << int(pa[i]) << ", " << int(pb[i]) << std::endl;
+            std::cout << (pa[i]) << ", " << (pb[i]) << std::endl;
         }
     }
     if (not_equal_num == 0)
@@ -40,7 +40,7 @@ bool isEqualAlmost(T *pa, T *pb, int len, float eps, const std::string &name)
         if (std::abs(pb[i] - pa[i]) > eps)
         {
             not_equal_num += 1;
-            std::cout << int(pa[i]) << ", " << int(pb[i]) << std::endl;
+            std::cout << (pa[i]) << ", " << (pb[i]) << std::endl;
         }
     }
     if (not_equal_num == 0)

@@ -102,4 +102,4 @@ public:
     }
 };
 
-SIMDTestSuiteRegister(NaiveDwConvTest, "op/naive_dwconv3x3");
+// SIMDTestSuiteRegister(NaiveDwConvTest, "op/naive_dwconv3x3");

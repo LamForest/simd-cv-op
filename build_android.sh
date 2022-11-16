@@ -4,12 +4,15 @@ else
     echo "ANDROID_NDK:"$ANDROID_NDK
 fi
 
-TMP_ANDROID_ABI="armeabi-v7a with NEON"
+ARM_ARCH="armeabi-v7a"
 
-rm -rf build/android/${TMP_ANDROID_ABI}
-mkdir -p build/android/${TMP_ANDROID_ABI}
-cd build/android/${TMP_ANDROID_ABI}
 
+if [[ "$1" != "fast" ]];then
+    rm -rf build/android/${ARM_ARCH}
+    mkdir -p build/android/${ARM_ARCH}
+fi
+
+cd build/android/${ARM_ARCH}
 
 cmake ../../../ -DBUILD_TEST=ON\
     -DCMAKE_TOOLCHAIN_FILE=$ANDROID_NDK/build/cmake/android.toolchain.cmake \
@@ -22,12 +25,13 @@ cmake ../../../ -DBUILD_TEST=ON\
     # -H../ -B$BUILD_DIR
 
 if [ $? != 0 ]; then
-    echo -e "\n\033[31m Error: Build Failed ! \033[m\n"
+    echo -e "\n\033[31m Error: Cmake failed ! \033[m\n"
     exit -1
 fi
 
+
 make -j8
-pwd
+
 # make install
 if [ $? != 0 ]; then
     echo -e "\n\033[31m Error: Build Failed ! \033[m\n"

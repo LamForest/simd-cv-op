@@ -5,6 +5,7 @@ xcodeproj
 
 # build files
 build
+result
 build_android_64
 build_android_32
 .DS_Store 

@@ -13,6 +13,7 @@
 
 #include <cmath>
 #include <thread>
+#include <iostream>
 
 class BGR2GrayTest : public SIMDTestCase
 {
@@ -77,23 +78,34 @@ public:
                            src_w,
                            src_h);
                 }
+                std::function<void()> naive_wrapper = [&]
+                {
+                    simd::naive_bgr2gray(input_img.data, output_simd.data, src_h * src_w);
+                };
+                TimeProfile(
+                    std::string("naive"), 100, naive_wrapper);
 
                 std::function<void()> opencv_wrapper = [&]
                 {
-                    // cv::cvtColor(input_img, output_gth, cv::COLOR_BGR2GRAY);
-                    simd::bgr2gray_neon_intrinsics(input_img.data, output_simd.data, src_h * src_w);
+                    cv::cvtColor(input_img, output_gth, cv::COLOR_BGR2GRAY);
                 };
                 TimeProfile(
-                    std::string("opencv"), 1000, opencv_wrapper);
+                    std::string("opencv"), 100, opencv_wrapper);
 
                 std::function<void()> simd_wrapper = [&]
                 {
-                    // simd::naive_bgr2gray(input_img.data, output_simd.data, src_h * src_w);
-                    // simd::bgr2gray_neon_intrinsics(input_img.data, output_simd.data, src_h * src_w);
+                    simd::bgr2gray_neon_intrinsics(input_img.data, output_simd.data, src_h * src_w);
+                };
+                TimeProfile(
+                    std::string("neon"), 100, simd_wrapper);
+
+                std::function<void()> simd_wrapper_2 = [&]
+                {
                     simd::bgr2gray_neon_intrinsics_v2(input_img.data, output_simd.data, src_h * src_w);
                 };
                 TimeProfile(
-                    std::string("simd"), 1000, simd_wrapper);
+                    std::string("neon_v2"), 100, simd_wrapper_2);
+                std::cout << "---------" << std::endl;
             }
         }
         return true;

@@ -1,0 +1,1 @@
+cd /data/local/tmp/simd; export LD_LIBRARY_PATH=.; ./run_test.out;
