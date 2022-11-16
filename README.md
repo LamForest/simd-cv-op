@@ -5,6 +5,7 @@
    - 线程池：[SimpleThreadPool](https://github.com/LamForest/cpp-blogs-code/blob/master/concurrent/threadpool/pool2/pool.hpp) 用于每一层算子的数据分块
    - 模型转换及加载：todo
    - 数据排布转换(e.g. NC4HW4)：todo
+   - 测试框架：采用MNN的测试框架。测试策略为：1）进行一定次数的warm up；2）循环一定次数后挂起一段时间后，再继续执行
   
   小目标：能够推理简单的[DepthwiseConv MNIST](https://github.com/LamForest/simd-cv-op/blob/master/pytorch_example/mnist_dwconv/main.py)模型，耗时至少与ncnn持平。
 
