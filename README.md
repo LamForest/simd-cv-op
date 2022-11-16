@@ -24,7 +24,7 @@
 ### 编译
 `./build_android.sh`
 
-### 编译&运行
+### 编译 & adb push & 运行
 `./run_android_test.sh`
 
 
