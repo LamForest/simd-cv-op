@@ -10,4 +10,5 @@ namespace simd
 
     void bgr2gray_neon_intrinsics_v2(uint8_t *in, uint8_t *out, int len);
 
+    void transpose4x4_intrinsics(float *in, float *out);
 }
