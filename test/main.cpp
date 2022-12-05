@@ -19,7 +19,8 @@ int main(int argc, char *argv[])
 
     // SIMDTestSuite::run("cv/BGR2Gray", 0);
     // SIMDTestSuite::run("op/dwconv3x3", 0);
-    SIMDTestSuite::run("cv/transpose", 0);
+    // SIMDTestSuite::run("cv/transpose", 0);
+    SIMDTestSuite::run("op/relu", 0);
 
     return 0;
 }
